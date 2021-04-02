@@ -1,0 +1,29 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile  {% endblock %}
+
+{% block body %}
+
+    <section class="blog-post-area section-margin">
+        <div class="container">
+            <div class="row">
+
+                {{ include('user/usermenu.html.twig') }}
+
+                <div class="col-lg-8">
+                    <h3>User Blog List</h3>
+                    <hr>
+
+
+
+
+                </div>
+
+                <!-- Start Blog Post Siddebar -->
+
+            </div>
+            <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+
+{% endblock %}

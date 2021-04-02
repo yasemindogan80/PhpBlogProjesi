@@ -1,0 +1,38 @@
+{% extends 'homebase.html.twig' %}
+
+ {% block title %} Blog Home | {{setting[0].title}}{% endblock %}
+ {% block keywords %}{{setting[0].keywords}}{% endblock %}
+ {% block description %}{{setting[0].description}}{% endblock %}
+
+ {% block body %}
+     <!--================ Start Blog Post Area =================-->
+
+
+
+     <section class="blog-post-area section-margin mt-4">
+     <div class="container">
+         <div class="row">
+         {% for blog in blogs %}
+         <div class="col-12 col-md-6">
+             <div class="thumb">
+                 <img class="card-img rounded-0" src="{{ asset('uploads/images/') ~ blog.image }}">
+             </div><br><br>
+         </div>
+         <div class="col-12 col-md-6">
+             <div class="big-post-content text-center mb-50">
+                 <div class="details mt-20">
+                     <h3 >{{ blog.title }}</h3>
+                     <ul class="thumb-info">
+                         <li class="ti-notepad">{{ blog.createdAt | date }}</li>
+                     </ul>
+                     <p>{{ blog.detail | raw }}</p>
+                     <a class="button" href="{{ path('blog_show', {'id': blog.id}) }}">Read More <i class="ti-arrow-right"></i></a>
+                 </div>
+             </div>
+         </div>
+         {% endfor %}
+         </div>
+     </div>
+     </section>
+
+ {% endblock %}

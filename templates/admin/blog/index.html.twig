@@ -1,0 +1,96 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Blog List{% endblock %}
+
+{% block body %}
+
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowURL, windowName, windowFeatures ){ window.open(windowURL, windowName, windowFeatures) ; }
+</SCRIPT>
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h2 class="pageheader-title">Blog List Page </h2>
+
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Blog Index</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <a href="{{ path('admin_blog_new') }}"class="btn btn-space btn-primary">Create New Blog</a>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Star</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>User</th>
+                        <th>Gallery</th>
+                        <th>Status</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for blog in blogs %}
+                        <tr>
+                            <td>{{ blog.id }}</td>
+                            <td>{{ blog.title }}</td>
+                            <td><img src="{{ asset('uploads/images/') ~ blog.image }}" height="30"></td>
+                            <td>{{ blog.star }}</td>
+                            <td>{{ blog.phone }}</td>
+                            <td>{{ blog.email }}</td>
+                            <td><a href="{{ path('admin_user_show', {'id': blog.userid}) }}">{{ blog.name }}</a></td>
+                            <td>
+                                <a href="javascript:openWin('{{ path('admin_image_new', {'id': blog.id}) }}', '', 'toolbar=no, location=no, directories=0, status=no, top=50, left=100, menuBar=no, csrollBars=yes, resizable=no, width=900, height=600');">
+                                    <img src="{{ asset('assets/admin/img') }}/gallery.png" height="40">
+                                </a>
+                            </td>
+
+                            <td>{{ blog.status }}</td>
+                            <td>
+                                <a href="{{ path('admin_blog_show', {'id': blog.id}) }}" class="btn btn-space btn-primary">Show</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_blog_edit', {'id': blog.id}) }}" class="btn btn-space btn-primary">Edit </a>
+                            </td>
+                            <td>
+                                {{ include('admin/blog/_delete_form.html.twig') }}
+                            </td>
+
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="17">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

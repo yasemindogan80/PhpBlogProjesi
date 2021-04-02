@@ -1,0 +1,43 @@
+<!-- Start Blog Post Siddebar -->
+<div class="col-lg-4 sidebar-widgets">
+    <div class="widget-wrap">
+
+
+        <div class="single-sidebar-widget post-category-widget">
+            <h4 class="single-sidebar-widget__title">User Menu</h4>
+            <img src="{{ asset('uploads/images/' ~ app.user.image) }}" height="40" class="user-avatar-md rounded-circle">
+            {{ app.user.name }} {{ app.user.surname }}
+            <br><br>
+            <ul class="cat-list mt-20">
+                <li>
+                    <a href="/user" class="d-flex justify-content-between">
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/user/blog" class="d-flex justify-content-between">
+                        <p>My Blogs</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/user/comments" class="d-flex justify-content-between">
+                        <p>My Comments</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="d-flex justify-content-between">
+                        <p>XXXX</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout" class="d-flex justify-content-between">
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<!-- End Blog Post Siddebar -->

@@ -1,0 +1,31 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+
+    <section class="blog-post-area section-margin">
+        <div class="container">
+            <div class="row">
+
+                {{ include('user/usermenu.html.twig') }}
+
+                <div class="col-lg-8">
+
+                    <h3>User Edit List</h3>
+                    <hr>
+                    {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('user_blog_index') }}">back to list</a>
+
+    {{ include('blog/_delete_form.html.twig') }}
+
+                </div>
+                <!-- Start Blog Post Siddebar -->
+
+            </div>
+            <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+
+{% endblock %}

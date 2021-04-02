@@ -1,0 +1,51 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h2 class="pageheader-title">Create Category </h2>
+
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Category</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Create Category</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+
+
+
+    {{ include('admin/category/_form.html.twig') }}
+
+    <a href="{{ path('category_index') }}" class="btn btn-space btn-primary">Back to List</a>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

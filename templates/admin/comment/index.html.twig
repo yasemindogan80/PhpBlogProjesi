@@ -1,0 +1,85 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<!-- ============================================================== -->
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h2 class="pageheader-title">Blank Pageheader </h2>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Pages</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Blank Pageheader</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Ip</th>
+                <th>User</th>
+                <th>Blog</th>
+                <th>Created_at</th>
+                <th>Rate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.subject }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.status }}</td>
+                <td>{{ comment.ip }}</td>
+                <td><a href="{{ path('admin_user_show', {'id': comment.userid}) }}">{{ comment.name }}{{ comment.surname }}</a></td>
+                <td><a href="{{ path('admin_blog_show', {'id': comment.blogid}) }}">{{ comment.title }}</a></td>
+                <td>{{ comment.created_at}}</td>
+                <td>{{ comment.rate }}</td>
+                <td>
+                    <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-space btn-primary">Show</a>
+                    <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}" class="btn btn-space btn-primary">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    {% endblock %}
+

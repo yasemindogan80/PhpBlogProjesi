@@ -1,0 +1,58 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile  {% endblock %}
+
+{% block body %}
+
+    <section class="blog-post-area section-margin">
+        <div class="container">
+            <div class="row">
+
+                {{ include('user/usermenu.html.twig') }}
+
+                <div class="col-lg-8">
+
+                    <h3>User Comments List</h3>
+                    <hr>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>Blog</th>
+                            <th>Created_at</th>
+                            <th>Rate</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td>{{ comment.subject }}</td>
+                                <td>{{ comment.comment }}</td>
+                                <td>{{ comment.status }}</td>
+                                <td nowrap><a href="{{ path('blog_show', {'id': comment.blogid}) }}">{{ comment.title }}</a></td>
+                                <td>{{ comment.created_at}}</td>
+                                <td>{{ comment.rate }}</td>
+                                <td><a href="" class="btn btn-danger">Delete</a> </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <!-- Start Blog Post Siddebar -->
+
+            </div>
+            <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+
+{% endblock %}

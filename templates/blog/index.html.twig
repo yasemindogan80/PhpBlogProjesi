@@ -1,0 +1,78 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures) {window.open(windowURL,windowName,windowFeatures);}
+    </SCRIPT>
+
+    <section class="blog-post-area section-margin">
+        <div class="container">
+            <div class="row">
+
+                {{ include('user/usermenu.html.twig') }}
+
+                <div class="col-lg-8">
+                    <h3>User Blog List</h3>
+                    <hr>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Star</th>
+            <th>Email</th>
+            <th>Gallery</th>
+            <th>Status</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.title }}</td>
+                <td><img src="{{ asset('uploads/images/') ~ blog.image }}" height="30"></td>
+                <td>{{ blog.star }}</td>
+                <td>{{ blog.email }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('user_image_new', {'id': blog.id}) }}', '', 'toolbar=no, location=no, directories=0, status=no, top=50, left=100, menuBar=no, csrollBars=yes, resizable=no, width=900, height=600');">
+                        <img src="{{ asset('assets/admin/img') }}/gallery.png" height="40">
+                    </a>
+                </td>
+
+                <td>{{ blog.status }}</td>
+                <td>
+                    <a href="{{ path('user_blog_show', {'id': blog.id}) }}" class="btn btn-space btn-primary">Show</a>
+                </td>
+                <td>
+                    <a href="{{ path('user_blog_edit', {'id': blog.id}) }}" class="btn btn-space btn-primary">Edit </a>
+                </td>
+                <td>
+                    {{ include('admin/blog/_delete_form.html.twig') }}
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_blog_new') }}" class="btn btn-space btn-primary">Create new</a>
+                </div>
+
+                <!-- Start Blog Post Siddebar -->
+
+            </div>
+            <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+
+{% endblock %}
