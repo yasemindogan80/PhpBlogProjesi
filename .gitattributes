@@ -5,3 +5,4 @@
 *.css linguist-detectable=false
 *.js linguist-detectable=false
 *.php linguist-detectable=true
+*.php linguist-language=php
